@@ -13,12 +13,16 @@ mongoose = require 'mongoose'
 log 'init middleware'
 bodyParser = require 'body-parser'
 morgan = require 'morgan'
+cookieParser = require 'cookie-parser'
+session = require 'express-session'
 favicon = require 'serve-favicon'
+dm = require 'damn-middleware'
 
 i18n = require 'i18n'
 i18n.configure
-    locales:['en']
-    directory: __dirname + '/locales'
+  locales:['en']
+  directory: __dirname + '/locales'
+  cookie: 'damndatabasesi18n'
 
 # config
 log 'configure express'
@@ -33,16 +37,18 @@ app.set 'view options',
 
 app.locals.pretty = true
 
-app.use (req, res, next)->
-  next()
-
- app.use i18n.init
-
 app.use favicon path.join __dirname, '../public/img/logo/favicon.ico'
+app.use '/', express.static(path.join(__dirname, '../public'))
+
 app.use morgan('dev')
 app.use bodyParser.json()
 app.use bodyParser.urlencoded
   extended: true
+app.use cookieParser()
+app.use session
+  secret: 'damndatabases'
+
+app.use i18n.init
 
 if process.env.NODE_ENV is 'development'
   livereload = require('express-livereload')
@@ -50,10 +56,18 @@ if process.env.NODE_ENV is 'development'
     port: process.env.LIFERELOAD_PORT || 35728
     watchDir: __dirname
 
-app.use '/', express.static(path.join(__dirname, '../public'))
+app.use (req, res, next)->
+  console.log res.__
+  next()
+
+# breadcrump
+app.use dm.view.breadcrumbs
 
 # spa routes
 app.use '/', require './routes/index'
+
+app.use (req, res)->
+  res.render '404'
 
 # liste
 log 'try to listen on port ' + app.get 'port'

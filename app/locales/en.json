@@ -1,8 +1,19 @@
 {
-  "mysql": "MySQL",
-  "mssql": "Microsoft SQL",
-  "postgresql": "PostgreSQL",
-  "mongodb": "MongoDB",
-  "couchdb": "CouchDB",
-  "redis": "Redis"
+	"home": "Startseite",
+	"mysql": "MySQL",
+	"mssql": "Microsoft SQL",
+	"postgresql": "PostgreSQL",
+	"mongodb": "MongoDB",
+	"couchdb": "CouchDB",
+	"redis": "Redis",
+	"sqlite": "SQLite",
+	"PostgreSQL": "PostgreSQL",
+	"MySQL": "MySQL",
+	"test": "test",
+	"asd": "asd",
+	"MongoDB": "MongoDB",
+	"CouchDB": "CouchDB",
+	"Redis": "Redis",
+	"SQLite": "SQLite",
+	"Microsoft SQL": "Microsoft SQL"
 }

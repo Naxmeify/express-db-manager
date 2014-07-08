@@ -7,32 +7,32 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='#') DamnDatabases
+      a.navbar-brand(href='/') DamnDatabases
     .navbar-collapse.collapse
       ul.nav.navbar-nav
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown') SQL
           ul.dropdown-menu(role='menu')
             li
-              a(href='mysql') MySQL
+              a(href='/mysql')=__('mysql')
             li
-              a(href='postgresql') PostgreSQL
+              a(href='/postgresql')=__('postgresql')
             li
-              a(href='mssql') Microsoft SQL
+              a(href='/mssql')=__('mssql')
             li
-              a(href='sqlite') SQLite
+              a(href='/sqlite')=__('sqlite')
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown') NoSQL
           ul.dropdown-menu(role='menu')
             li
-              a(href='mongodb') MongoDB
+              a(href='/mongodb')=__('mongodb')
             li
-              a(href='couchdb') CouchDB
+              a(href='/couchdb')=__('couchdb')
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown') Key-Value
           ul.dropdown-menu(role='menu')
             li
-              a(href='redis') Redis
+              a(href='/redis')=__('redis')
       ul.nav.navbar-nav.navbar-right
         li
           a(href='https://github.com/damncreative/DamnDatabases', target='_blank') GitHub Repo

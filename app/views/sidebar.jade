@@ -1,0 +1,16 @@
+.row
+  .col-md-12
+    button.btn.btn-success(type='button')
+      span.glyphicon.glyphicon-plus
+      !=" Add "
+      !=__(locals.breadcrumb[locals.breadcrumb.length-1].title)
+      !=" Connection"
+
+br
+
+.list-group
+  - if(locals.itemlist)
+    - each item in itemlist
+      a.list-group-item.active(href=item.href)
+        h4.list-group-item-heading=item.title
+        p.list-group-item-text=item.text
