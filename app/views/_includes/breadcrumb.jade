@@ -1,0 +1,7 @@
+ol.breadcrumb
+  li
+    a(href='/') Home
+  - if(locals.breadcrumb)
+    - each crumb in breadcrumb
+      li
+        a(href=crumb.href) crumb.title

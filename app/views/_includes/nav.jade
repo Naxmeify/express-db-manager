@@ -1,5 +1,4 @@
-//
- Fixed navbar 
+//Fixed navbar 
 .navbar.navbar-default.navbar-fixed-top(role='navigation')
   .container-fluid
     .navbar-header
@@ -11,36 +10,33 @@
       a.navbar-brand(href='#') DamnDatabases
     .navbar-collapse.collapse
       ul.nav.navbar-nav
-        li.active
-          a(href='#') Home
-        li
-          a(href='#about') About
-        li
-          a(href='#contact') Contact
         li.dropdown
-          a.dropdown-toggle(href='#', data-toggle='dropdown')
-            | Dropdown
-            span.caret
+          a.dropdown-toggle(href='#', data-toggle='dropdown') SQL
           ul.dropdown-menu(role='menu')
             li
-              a(href='#') Action
+              a(href='mysql') MySQL
             li
-              a(href='#') Another action
+              a(href='postgresql') PostgreSQL
             li
-              a(href='#') Something else here
-            li.divider
-            li.dropdown-header Nav header
+              a(href='mssql') Microsoft SQL
             li
-              a(href='#') Separated link
+              a(href='sqlite') SQLite
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown') NoSQL
+          ul.dropdown-menu(role='menu')
             li
-              a(href='#') One more separated link
+              a(href='mongodb') MongoDB
+            li
+              a(href='couchdb') CouchDB
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown') Key-Value
+          ul.dropdown-menu(role='menu')
+            li
+              a(href='redis') Redis
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='../navbar/') Default
+          a(href='https://github.com/damncreative/DamnDatabases', target='_blank') GitHub Repo
         li
-          a(href='../navbar-static-top/') Static top
-        li.active
-          a(href='./') Fixed top
-    //
-      /.nav-collapse 
+          a(href='https://github.com/damncreative/DamnDatabases/issues', target='_blank') Issues
+    //.nav-collapse 
 

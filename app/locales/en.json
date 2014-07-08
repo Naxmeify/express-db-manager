@@ -1,0 +1,8 @@
+{
+  "mysql": "MySQL",
+  "mssql": "Microsoft SQL",
+  "postgresql": "PostgreSQL",
+  "mongodb": "MongoDB",
+  "couchdb": "CouchDB",
+  "redis": "Redis"
+}

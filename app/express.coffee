@@ -15,11 +15,10 @@ bodyParser = require 'body-parser'
 morgan = require 'morgan'
 favicon = require 'serve-favicon'
 
-if process.env.NODE_ENV is 'development'
-  livereload = require('express-livereload')
-  livereload app, 
-    port: process.env.LIFERELOAD_PORT || 35728
-    watchDir: __dirname
+i18n = require 'i18n'
+i18n.configure
+    locales:['en']
+    directory: __dirname + '/locales'
 
 # config
 log 'configure express'
@@ -37,11 +36,19 @@ app.locals.pretty = true
 app.use (req, res, next)->
   next()
 
+ app.use i18n.init
+
 app.use favicon path.join __dirname, '../public/img/logo/favicon.ico'
 app.use morgan('dev')
 app.use bodyParser.json()
 app.use bodyParser.urlencoded
   extended: true
+
+if process.env.NODE_ENV is 'development'
+  livereload = require('express-livereload')
+  livereload app, 
+    port: process.env.LIFERELOAD_PORT || 35728
+    watchDir: __dirname
 
 app.use '/', express.static(path.join(__dirname, '../public'))
 
