@@ -1,13 +1,3 @@
-.row
-  .col-md-12
-    button.btn.btn-success(type='button')
-      span.glyphicon.glyphicon-plus
-      !=" Add "
-      !=__(locals.breadcrumb[locals.breadcrumb.length-1].title)
-      !=" Connection"
-
-br
-
 .list-group
   - if(locals.itemlist)
     - each item in itemlist

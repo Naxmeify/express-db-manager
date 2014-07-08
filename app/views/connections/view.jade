@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+block content
+  .row
+    .col-md-12
+      .page-header
+        h1=__(locals.breadcrumb[locals.breadcrumb.length-1].title)
+          !=' '
+          small Connection Details
+  .row
+    .col-md-12
+      include view_menu
+
+  .row
+    .col-md-12
+      table.table.rowlink.table-striped.table-bordered.table-hover(data-link='row')
+        thead
+          tr
+            th=__('Database')
+            th=__('options')
+        tbody.rowlink(data-link='row')
+          - if(locals.connections)
+            - each database, key in databases
+              tr
+                td=database.title
+                td.rowlink-skip
+                  .btn-group
+                    a.btn.btn-default(href='#')
+                      span.glyphicon.glyphicon-eye
+                      !=' '+__('view')
+                    a.btn.btn-info(href='#')
+                      span.glyphicon.glyphicon-pencil
+                      !=' '+__('edit')
+                    a.btn.btn-danger(href='#')
+                      span.glyphicon.glyphicon-pencil
+                      !=' '+__('delete')
+                

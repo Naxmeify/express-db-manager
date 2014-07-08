@@ -17,12 +17,14 @@ cookieParser = require 'cookie-parser'
 session = require 'express-session'
 favicon = require 'serve-favicon'
 dm = require 'damn-middleware'
+MongoStore = require('connect-mongo')(session)
 
 i18n = require 'i18n'
 i18n.configure
   locales:['en']
   directory: __dirname + '/locales'
   cookie: 'damndatabasesi18n'
+  updateFiles: false
 
 # config
 log 'configure express'
@@ -47,6 +49,8 @@ app.use bodyParser.urlencoded
 app.use cookieParser()
 app.use session
   secret: 'damndatabases'
+  store: new MongoStore
+    url: 'mongodb://localhost:27017/damndatabases/sessions'
 
 app.use i18n.init
 
@@ -57,7 +61,8 @@ if process.env.NODE_ENV is 'development'
     watchDir: __dirname
 
 app.use (req, res, next)->
-  console.log res.__
+  if not req.session.driver?
+    req.session.driver = {}
   next()
 
 # breadcrump

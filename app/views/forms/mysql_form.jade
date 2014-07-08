@@ -1,0 +1,12 @@
+extends form
+
+block form
+  .form-group
+    label(for='database.host')=__('database.host')
+    input.form-control#database.host(type='text', name='host', placeholder=__('database.host.placeholder'), value=host)
+  .form-group
+    label(for='database.user')=__('database.user')
+    input.form-control#database.user(type='text', name='user', placeholder=__('database.user.placeholder'), value=user)
+  .form-group
+    label(for='database.pass')=__('database.pass')
+    input.form-control#database.pass(type='password', name='pass', placeholder=__('database.pass.placeholder'), value=pass)

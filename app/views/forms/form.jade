@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block content
+  .container
+    .row
+      .col-md-12
+        form(role='form', action=locals.breadcrumb[locals.breadcrumb.length-2].href, method='post', autocomplete='off')
+          block form
+          input(type='hidden', name='driver', value=driver)
+          button.btn.btn-default(type='submit')=__('Submit')
