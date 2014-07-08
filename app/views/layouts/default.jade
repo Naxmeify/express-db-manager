@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    block pre_head
+    include ../_includes/head
+    block sub_head
+  body
+    .container-fluid
+        block pre_nav
+        include ../_includes/nav
+        block sub_nav
+        block content
+        block pre_footer
+        include ../_includes/footer
+        block sub_footer

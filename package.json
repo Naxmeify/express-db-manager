@@ -1,0 +1,40 @@
+{
+  "name": "DamnDatabases",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -q app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damncreative/DamnDatabases.git"
+  },
+  "author": "damn creative",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damncreative/DamnDatabases/issues"
+  },
+  "homepage": "https://github.com/damncreative/DamnDatabases",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "coffee-script": "^1.7.1",
+    "damn-utils": "0.0.3",
+    "debug": "^1.0.2",
+    "express": "^4.5.1",
+    "express-session": "^1.6.4",
+    "jade": "^1.3.1",
+    "mongoose": "^3.8.12",
+    "morgan": "^1.1.1",
+    "mysql": "^2.3.2",
+    "serve-favicon": "^2.0.1",
+    "stylus": "^0.47.1"
+  },
+  "devDependencies": {
+    "express-livereload": "0.0.24",
+    "mocha": "^1.20.1",
+    "nodemon": "^1.2.1",
+    "should": "^4.0.4"
+  }
+}
