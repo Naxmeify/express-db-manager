@@ -1,10 +1,24 @@
+log = require('debug') 'damndatabases:MySQLDriver'
 exports = module.exports
 mysql = require 'mysql'
+_ = require 'lodash'
 
-exports.test = (credentials, cb)->
-  console.log credentials
+exports.connect = (credentials, cb)->
+  credentials = _.extend credentials, {}
+    # debug: true
   connection = mysql.createConnection credentials
   connection.connect (err)->
-    return cb err, false if err
-    cb err, true unless err
-    connection.destroy()
+    cb(err, connection)
+
+exports.getDatabases = (credentials, cb)->
+   @connect credentials, (err, connection)->
+    connection.query 'SHOW DATABASES', cb
+
+exports.test = (credentials, cb)->
+  @connect credentials, (err, connection)->
+    cb err, connection
+    destroy connection
+
+destroy = (connection)->
+  connection.destroy() if connection.state is 'authenticated'
+    

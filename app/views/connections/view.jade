@@ -19,19 +19,20 @@ block content
             th=__('Database')
             th=__('options')
         tbody.rowlink(data-link='row')
-          - if(locals.connections)
+          - if(locals.databases)
             - each database, key in databases
               tr
-                td=database.title
+                td=database.Database
                 td.rowlink-skip
                   .btn-group
-                    a.btn.btn-default(href='#')
-                      span.glyphicon.glyphicon-eye
-                      !=' '+__('view')
-                    a.btn.btn-info(href='#')
+                    a.btn.btn-default(href=locals.breadcrumb[locals.breadcrumb.length-1].href+'/'+database.Database, title=__('view'))
+                      span.glyphicon.glyphicon-eye-open
+                    a.btn.btn-default(href=locals.breadcrumb[locals.breadcrumb.length-1].href+'/'+database.Database+'/export', title=__('export'))
+                      span.glyphicon.glyphicon-cloud-download
+                    a.btn.btn-default(href=locals.breadcrumb[locals.breadcrumb.length-1].href+'/'+database.Database+'/import', title=__('import'))
+                      span.glyphicon.glyphicon-cloud-upload
+                    a.btn.btn-info(href=locals.breadcrumb[locals.breadcrumb.length-1].href+'/'+database.Database+'/edit', title=__('edit'))
                       span.glyphicon.glyphicon-pencil
-                      !=' '+__('edit')
-                    a.btn.btn-danger(href='#')
-                      span.glyphicon.glyphicon-pencil
-                      !=' '+__('delete')
+                    a.btn.btn-danger(href=locals.breadcrumb[locals.breadcrumb.length-1].href+'/'+database.Database+'/delete', title=__('delete'))
+                      span.glyphicon.glyphicon-remove
                 

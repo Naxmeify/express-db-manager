@@ -9,6 +9,8 @@
 	"sqlite": "SQLite",
   "options": "Options",
   "new": "New",
+  "view": "View",
+  "export": "Export",
   "add": "Add",
   "add.connection": "Add Connection",
   "edit": "Edit",
@@ -18,8 +20,12 @@
   "database": "Database",
   "database.host": "Host",
   "database.host.placeholder": "Enter Host (Default: localhost)",
+  "database.port": "Port",
+  "database.port.placeholder": "Enter Port (Default: 3306)",
   "database.user": "Username",
   "database.user.placeholder": "Username (Default: root)",
-  "database.pass": "Password",
-  "database.pass.placeholder": "Password (Default: root)"
+  "database.password": "Password",
+  "database.password.placeholder": "Password (Default: root)",
+  "sql": "SQL",
+  "sql.query": "SQL Query"
 }

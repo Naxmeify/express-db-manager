@@ -2,9 +2,18 @@ extends ../layouts/default
 
 block content
   .container
+    - if(locals.err)
+      .row
+        .col-md-12
+          .alert.alert-danger.alert-dismissible(role='alert')
+            button.close(type='button', data-dismiss='alert')
+              span(aria-hidden='true') ×
+                span.sr-only Close
+            strong Warning!
+            !=" "+err.code
+
     .row
       .col-md-12
         form(role='form', action=locals.breadcrumb[locals.breadcrumb.length-2].href, method='post', autocomplete='off')
           block form
-          input(type='hidden', name='driver', value=driver)
           button.btn.btn-default(type='submit')=__('Submit')

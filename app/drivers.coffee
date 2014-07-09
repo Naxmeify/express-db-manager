@@ -31,11 +31,7 @@ exports.getDriver = (driver)->
     # Key-Value
     when 'redis'
       return @RedisDBDriver
-    
-  
-
+      
 exports.testConnection = (driver, credentials, cb)->
-  console.log credentials
   DBDriver = @getDriver driver
-
   DBDriver.test credentials, cb
