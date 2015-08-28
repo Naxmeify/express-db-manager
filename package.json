@@ -8,7 +8,7 @@
     "dbmanager": "./bin/dbmanager"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/bower install",
+    "postinstall": "./node_modules/.bin/bower install && ./bin/dbmanager precompile",
     "start": "DEBUG=express:db-manager* ./bin/dbmanager",
     "test": "./node_modules/.bin/grunt test",
     "deps": "npm list --depth=0"
