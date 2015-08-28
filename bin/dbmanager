@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var path = require("path");
 var pkg = require("../package.json");
 var minimist = require("minimist");
 var argv = minimist(process.argv.slice(2), {
@@ -44,15 +45,38 @@ if(argv.help) {
   process.exit(0);
 }
 
-var app = require("..");
-if(argv.port) {
-  app.set('port', argv.port);
+if(argv._[0] === 'precompile') {
+  var spawn = require('child_process').spawn;
+  var args = [path.join(__dirname, 'precompile')];
+  var proc = spawn(process.execPath, args, { stdio: 'inherit' });
+  
+  proc.on('exit', function (code, signal) {
+    process.on('exit', function(){
+      if (signal) {
+        process.kill(process.pid, signal);
+      } else {
+        process.exit(code);
+      }
+    });
+  });
+  
+  // terminate children.
+  process.on('SIGINT', function () {
+    proc.kill('SIGINT'); // calls runner.abort()
+    proc.kill('SIGTERM'); // if that didn't work, we're probably in an infinite loop, so make it die.
+  });
+} else {
+  var app = require("..");
+  if(argv.port) {
+    app.set('port', argv.port);
+  }
+  
+  app.listen(app.get('port'), function(err) {
+    if(err) {
+      throw err;
+    } else {
+      console.log("Application running on port", app.get('port'));
+    }
+  });
 }
 
-app.listen(app.get('port'), function(err) {
-  if(err) {
-    throw err;
-  } else {
-    console.log("Application running on port", app.get('port'));
-  }
-})

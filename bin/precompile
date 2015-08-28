@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+var Mincer = require('mincer');
+var production = process.env.NODE_ENV === 'production';
+
+var env = new Mincer.Environment('./');
+env.appendPath('express/client/assets/js');
+env.appendPath('express/client/assets/css');
+env.appendPath('express/client/assets/templates');
+env.appendPath('express/client/assets/vendor');
+
+
+env.registerHelper('asset_path', function(name, opts) {
+  var assetPath = null;
+  var asset = env.findAsset(name, opts);
+  if (!asset) throw new Error("File [" + name + "] not found");
+  if (production) {
+    assetPath = '/assets/' + asset.digestPath;
+  } else {
+    assetPath = '/assets/' + asset.logicalPath;
+  }
+  return assetPath;
+});
+
+var manifest = new Mincer.Manifest(env, './express/client/public/assets');
+manifest.compile([
+  'application.js',
+  'application.css',
+  
+  '*.eot',
+  '*.svg',
+  '*.ttf',
+  '*.woff',
+  '*.woff2',
+  '*.png',
+  '*.gif',
+  '*.jpg',
+  '*.ico',
+
+  '**/*.eot',
+  '**/*.svg',
+  '**/*.ttf',
+  '**/*.woff',
+  '**/*.woff2',
+  '**/*.png',
+  '**/*.gif',
+  '**/*.jpg',
+  '**/*.ico',
+  
+], function(err, data) {
+  if(err) {
+    console.error(err);
+  } else {
+    console.info('Finished precompile:');
+    console.dir(data);
+  }
+});
