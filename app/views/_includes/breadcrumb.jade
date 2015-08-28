@@ -1,8 +1,0 @@
-ol.breadcrumb
-  li
-    a(href='/')
-      i.glyphicon.glyphicon-home
-  - if(locals.breadcrumb)
-    - each crumb in breadcrumb
-      li
-        a(href=crumb.href)=crumb.title
