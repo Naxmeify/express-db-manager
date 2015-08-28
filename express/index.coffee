@@ -17,6 +17,9 @@ LOG "use morgan" unless app.get('env') is 'production'
 app.use morgan 'dev' unless app.get('env') is 'production'
 LOG "use favicon"
 app.use favicon path.resolve __dirname, 'public', 'favicon.ico'
+LOG "use static for public folder"
+app.use express.static path.resolve(__dirname, 'public'),
+    redirect: false
 LOG "load routes"
 app.loadRoutes
   'mount /api': require './api'
