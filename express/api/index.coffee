@@ -35,6 +35,6 @@ app.use flash()
 LOG "use favicon"
 app.use favicon path.resolve __dirname, '..', 'public', 'favicon.ico'
 LOG "load routes"
-app.loadRoutes {}
+app.loadRoutes require('./routes') app
 LOG "export application"
 module.exports = app;

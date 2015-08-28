@@ -8,6 +8,7 @@
     "dbmanager": "./bin/dbmanager"
   },
   "scripts": {
+    "postinstall": "./node_modules/.bin/bower install",
     "start": "DEBUG=express:db-manager* ./bin/dbmanager",
     "test": "./node_modules/.bin/grunt test",
     "deps": "npm list --depth=0"
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "body-parser": "^1.13.3",
+    "bower": "^1.5.2",
     "coffee-script": "^1.9.3",
     "connect-mincer": "^1.0.0",
     "cookie-parser": "^1.3.5",
@@ -50,6 +52,7 @@
     "method-override": "^2.3.5",
     "minimist": "^1.2.0",
     "morgan": "^1.6.1",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "stylus": "^0.52.0"
   }
 }

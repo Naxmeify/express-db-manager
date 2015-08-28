@@ -1,0 +1,13 @@
+doctype html
+html(ng-app='dbmanager')
+  head
+    title=manifest.name
+    
+    // CSS
+    !=css('application.css')
+    
+  body
+    div(ui-view='')
+    
+    // JS
+    !=js('application.js')
